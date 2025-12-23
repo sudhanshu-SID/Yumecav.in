@@ -1,0 +1,41 @@
+export interface Product {
+  id: number;
+  name: string;
+  description: string;
+  price: string;
+  vibeScore: number;
+  imageBefore: string;
+  imageAfter: string;
+  tags: string[];
+  category: string; // e.g., 'Cyberpunk', 'Anime', 'Minimalist'
+  type: 'Sticker' | 'Poster-Single' | 'Poster-Split'; 
+}
+
+export interface Hotspot {
+  id: number;
+  top: number;
+  left: number;
+  name: string;
+  price: string;
+  link: string;
+}
+
+export interface LookbookItem {
+  id: number;
+  title: string;
+  image: string;
+  hotspots: Hotspot[];
+}
+
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+export interface UGCPost {
+  id: number;
+  user: string;
+  product: string;
+  time: string;
+  img: string;
+}
