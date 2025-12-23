@@ -6,9 +6,12 @@
     <title>YUMECAV | Curated Aesthetics</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+      
       body {
         cursor: none;
         background-color: #171717;
+        font-family: 'Inter', sans-serif;
       }
       .no-scrollbar::-webkit-scrollbar {
         display: none;
@@ -16,6 +19,14 @@
       .no-scrollbar {
         -ms-overflow-style: none;
         scrollbar-width: none;
+      }
+      
+      @keyframes fade-in {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      .animate-fade-in {
+        animation: fade-in 0.5s ease-out forwards;
       }
     </style>
   <script type="importmap">
@@ -30,7 +41,6 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
 </head>
   <body>
     <div id="root"></div>
