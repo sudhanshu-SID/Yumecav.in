@@ -34,8 +34,8 @@ export const STICKERS: Product[] = [
     description: "Matte-finish full chassis skin for MacBook Pro. Features Japanese cyberpunk typography.", 
     price: "45.00", 
     vibeScore: 9.8, 
-    imageBefore: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=2071&auto=format&fit=crop", 
-    imageAfter: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop", 
+    imageBefore: "simple laptop.png", 
+    imageAfter: "stickkers.png", 
     tags: ["Waterproof", "3M Vinyl"],
     category: 'Cyberpunk',
     type: 'Sticker'
