@@ -27,7 +27,7 @@ const App: React.FC = () => {
 
   // Show limited items on homepage (3 to leave room for the explore card)
   const featuredStickers = STICKERS.slice(0, 3);
-  const featuredPosters = POSTERS.slice(0, 3);
+  const featuredPosters = POSTERS.slice(0, 6);
 
   const openCollection = (type: string) => {
     setCollectionInitialType(type);
@@ -65,7 +65,7 @@ const App: React.FC = () => {
       <HeroSection />
 
       {/* --- Infinite Marquee 1 --- */}
-      <InfiniteMarquee text="ELEVATE YOUR REALITY • CUSTOM SKINS • LIMITED DROPS • WORLDWIDE SHIPPING • DON'T BE BORING •" />
+      <InfiniteMarquee text="ELEVATE YOUR REALITY • CUSTOM STICKERS AND POSTERS • LIMITED DROPS • ALL OVER INDIA SHIPPING • DON'T BE BORING •" />
 
       {/* --- Drop Countdown --- */}
       <DropCountdown />
