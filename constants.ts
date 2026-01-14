@@ -105,12 +105,12 @@ export const STICKERS: Product[] = [
 export const POSTERS: Product[] = [
   { 
     id: 101, 
-    name: "Tokyo Nightfall Print", 
+    name: "Lewis Hemilton", 
     description: "A2 Matte poster featuring a long-exposure shot of Shibuya crossing. Deep blacks and neon hits.", 
     price: "25.00", 
     vibeScore: 9.4, 
-    imageBefore: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=2158&auto=format&fit=crop", 
-    imageAfter: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?q=80&w=1974&auto=format&fit=crop", 
+    imageBefore: "cars-1.jpeg", 
+    imageAfter: "cars-1.jpeg", 
     tags: ["Matte Finish", "A2 Size"],
     category: 'Cyberpunk',
     type: 'Poster-Single'
