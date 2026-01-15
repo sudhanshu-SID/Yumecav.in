@@ -26,8 +26,8 @@ const App: React.FC = () => {
   const [collectionInitialType, setCollectionInitialType] = useState('All');
 
   // Show limited items on homepage (3 to leave room for the explore card)
-  const featuredStickers = STICKERS.slice(0, 3);
-  const featuredPosters = POSTERS.slice(0, 6);
+  const featuredStickers = STICKERS.slice(0, 30);
+  const featuredPosters = POSTERS.slice(0, 30);
 
   const openCollection = (type: string) => {
     setCollectionInitialType(type);
