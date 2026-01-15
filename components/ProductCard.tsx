@@ -41,8 +41,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onOrder }) => {
   };
 
   return (
-    <div className={`group relative bg-neutral-800 rounded-2xl overflow-hidden shadow-xl transition-all duration-500 ${isSticker ? 'hover:shadow-purple-900/10' : 'hover:-translate-y-2 hover:shadow-purple-900/20'}`}>
-      <div className={`relative ${isSticker ? 'h-[200px] md:h-[280px]' : 'h-[400px]'} overflow-hidden`}>
+    <div className={`group relative bg-neutral-800 rounded-2xl overflow-hidden shadow-xl transition-all duration-500 h-full ${isSticker ? 'hover:shadow-purple-900/10 border border-white/5' : 'hover:-translate-y-2 hover:shadow-purple-900/20'}`}>
+      <div className={`relative ${isSticker ? 'h-[160px] md:h-[220px]' : 'h-[400px]'} overflow-hidden`}>
         <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-transparent to-transparent opacity-40 z-10"></div>
         
         {/* Wishlist Button */}
@@ -55,7 +55,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onOrder }) => {
           }`}
           aria-label={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
         >
-          <Heart className={`w-3.5 h-3.5 ${isWishlisted ? 'fill-current' : ''}`} />
+          <Heart className={`w-3 h-3 md:w-3.5 md:h-3.5 ${isWishlisted ? 'fill-current' : ''}`} />
         </button>
 
         {/* Stickers: Fixed After Image | Others: Before/After Hover */}
@@ -96,8 +96,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onOrder }) => {
       </div>
       
       {/* Content Area - Adjusted for compact Sticker Grid */}
-      <div className={`p-4 z-20 transition-transform duration-500 ${isSticker ? '' : 'translate-y-12 group-hover:translate-y-0'}`}>
-        <h3 className={`font-bold mb-1 leading-tight drop-shadow-lg truncate ${isSticker ? 'text-sm md:text-base' : 'text-2xl'}`}>
+      <div className={`p-3 md:p-4 z-20 transition-transform duration-500 ${isSticker ? '' : 'translate-y-12 group-hover:translate-y-0'}`}>
+        <h3 className={`font-bold mb-1 leading-tight drop-shadow-lg truncate ${isSticker ? 'text-xs md:text-sm' : 'text-2xl'}`}>
           {product.name}
         </h3>
         
@@ -105,17 +105,17 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onOrder }) => {
            <p className="text-sm text-neutral-300 mb-6 line-clamp-2 drop-shadow-md">{product.description}</p>
         )}
 
-        <div className={`flex items-center justify-between border-t border-white/5 pt-3 transition-opacity duration-500 ${isSticker ? 'opacity-100' : 'opacity-0 group-hover:opacity-100 delay-200'}`}>
+        <div className={`flex items-center justify-between border-t border-white/5 pt-2 md:pt-3 transition-opacity duration-500 ${isSticker ? 'opacity-100' : 'opacity-0 group-hover:opacity-100 delay-200'}`}>
           <div className="flex flex-col">
-            <span className="text-[9px] text-neutral-500 uppercase tracking-wider">Price</span>
-            <span className={`font-bold text-white ${isSticker ? 'text-sm' : 'text-lg'}`}>${product.price}</span>
+            <span className="text-[8px] md:text-[9px] text-neutral-500 uppercase tracking-wider">Price</span>
+            <span className={`font-bold text-white ${isSticker ? 'text-xs md:text-sm' : 'text-lg'}`}>${product.price}</span>
           </div>
           <button 
             onClick={() => onOrder(product.name)}
-            className={`flex items-center gap-2 bg-purple-600 hover:bg-purple-500 text-white rounded-lg font-bold transition-all ${isSticker ? 'p-1.5' : 'px-5 py-2.5 text-sm'}`}
+            className={`flex items-center gap-2 bg-purple-600 hover:bg-purple-500 text-white rounded-lg font-bold transition-all ${isSticker ? 'p-1 md:p-1.5' : 'px-5 py-2.5 text-sm'}`}
             title="Order on WhatsApp"
           >
-            <MessageCircle className={`${isSticker ? 'w-4 h-4' : 'w-4 h-4'}`} />
+            <MessageCircle className={`${isSticker ? 'w-3 h-3 md:w-4 md:h-4' : 'w-4 h-4'}`} />
             {!isSticker && "Order"}
           </button>
         </div>

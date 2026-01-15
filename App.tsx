@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Layers, Image as ImageIcon } from 'lucide-react';
+import { Layers, Image as ImageIcon, ChevronRight } from 'lucide-react';
 import { NOISE_SVG_DATA_URI, STICKERS, POSTERS, LOOKBOOKS } from './constants';
 import { handleOrder } from './utils';
 
@@ -25,8 +25,9 @@ const App: React.FC = () => {
   const [isCollectionOpen, setIsCollectionOpen] = useState(false);
   const [collectionInitialType, setCollectionInitialType] = useState('All');
 
-  // Show limited items on homepage (3 to leave room for the explore card)
+  // Show all 30 stickers as requested
   const featuredStickers = STICKERS.slice(0, 30);
+  // Keep posters limited for focus
   const featuredPosters = POSTERS.slice(0, 30);
 
   const openCollection = (type: string) => {
@@ -65,7 +66,7 @@ const App: React.FC = () => {
       <HeroSection />
 
       {/* --- Infinite Marquee 1 --- */}
-      <InfiniteMarquee text="ELEVATE YOUR REALITY • CUSTOM STICKERS AND POSTERS • LIMITED DROPS • ALL OVER INDIA SHIPPING • DON'T BE BORING •" />
+      <InfiniteMarquee text="ELEVATE YOUR REALITY • CUSTOM SKINS • LIMITED DROPS • WORLDWIDE SHIPPING • DON'T BE BORING •" />
 
       {/* --- Drop Countdown --- */}
       <DropCountdown />
@@ -91,47 +92,66 @@ const App: React.FC = () => {
           <div className="mb-20">
              <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-4">THE ARCHIVE</h2>
              <div className="h-1 w-24 bg-purple-500 mb-6"></div>
-             <p className="text-neutral-400">Featured artifacts from the current timeline.</p>
+             <p className="text-neutral-400 uppercase tracking-widest text-xs font-bold">Featured artifacts from the current timeline.</p>
           </div>
 
-          {/* Stickers */}
+          {/* Stickers & Skins - Horizontal Scroll */}
           <div className="mb-24">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
+            <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-4 border-b border-white/10 pb-4">
               <div className="flex items-center gap-3">
                 <Layers className="text-purple-500 w-6 h-6" />
-                <h3 className="text-2xl font-bold tracking-widest uppercase">Stickers & Skins</h3>
+                <h3 className="text-2xl font-bold tracking-widest uppercase italic">Stickers & Skins</h3>
+              </div>
+              <div className="flex items-center gap-6">
+                <div className="hidden md:flex items-center gap-2 text-[10px] text-neutral-500 font-bold uppercase tracking-widest animate-pulse">
+                  <span>Scroll Right</span>
+                  <ChevronRight className="w-3 h-3" />
+                </div>
+                <span className="text-[10px] font-mono text-neutral-500 uppercase">Sector: 01_Skins</span>
               </div>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {featuredStickers.map((product) => (
-                <ProductCard key={product.id} product={product} onOrder={handleOrder} />
-              ))}
-              {/* Explore More Card for Stickers */}
-              <ExploreCard 
-                title="Sticker Archive" 
-                subtitle="View All Categories" 
-                onClick={() => openCollection('Stickers')}
-                bgImage="https://images.unsplash.com/photo-1614624532983-4ce03382d63d?q=80&w=2070&auto=format&fit=crop"
-              />
+            <div className="relative group/scroll">
+              {/* Fade out mask on the right */}
+              <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-neutral-900 to-transparent z-10 pointer-events-none opacity-0 md:group-hover/scroll:opacity-100 transition-opacity"></div>
+              
+              <div className="flex overflow-x-auto no-scrollbar gap-4 pb-6 px-1 scroll-smooth">
+                {featuredStickers.map((product) => (
+                  <div key={product.id} className="flex-none w-[160px] md:w-[220px]">
+                    <ProductCard product={product} onOrder={handleOrder} />
+                  </div>
+                ))}
+                {/* Explore More Card at the end of the scroll */}
+                <div className="flex-none w-[160px] md:w-[220px]">
+                  <ExploreCard 
+                    title="Archive" 
+                    subtitle="View Full Archive" 
+                    onClick={() => openCollection('Stickers')}
+                    bgImage="https://images.unsplash.com/photo-1614624532983-4ce03382d63d?q=80&w=2070&auto=format&fit=crop"
+                  />
+                </div>
+              </div>
             </div>
           </div>
 
           <div className="w-full h-px bg-gradient-to-r from-transparent via-purple-900/50 to-transparent mb-24"></div>
 
-          {/* Posters */}
+          {/* Posters - Matching Sector label */}
           <div>
-            <div className="flex items-center gap-3 mb-10">
-              <ImageIcon className="text-purple-500 w-6 h-6" />
-              <h3 className="text-2xl font-bold tracking-widest uppercase">Wall Art</h3>
+            <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-4 border-b border-white/10 pb-4">
+              <div className="flex items-center gap-3">
+                <ImageIcon className="text-purple-500 w-6 h-6" />
+                <h3 className="text-2xl font-bold tracking-widest uppercase italic">Wall Art</h3>
+              </div>
+              <span className="text-[10px] font-mono text-neutral-500 uppercase">Sector: 02_Prints</span>
             </div>
+            
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {featuredPosters.map((product) => (
                 <ProductCard key={product.id} product={product} onOrder={handleOrder} />
               ))}
-              {/* Explore More Card for Posters */}
               <ExploreCard 
-                title="Art Gallery" 
+                title="Gallery" 
                 subtitle="Browse All Prints" 
                 onClick={() => openCollection('Poster')}
                 bgImage="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2070&auto=format&fit=crop"
@@ -144,7 +164,7 @@ const App: React.FC = () => {
       {/* --- Infinite Marquee 2 --- */}
       <InfiniteMarquee text="EST 2024 • DESIGNED IN TOKYO • MANUFACTURED ON EARTH • FUTURE READY • YUMECAV •" reverse />
 
-      {/* --- Limited Drop Collages (Formerly Shop The Look) --- */}
+      {/* --- Limited Drop Collages --- */}
       <section id="drops" className="py-24 bg-neutral-900">
          <div className="container mx-auto px-6">
             <div className="mb-16 text-center max-w-2xl mx-auto">
