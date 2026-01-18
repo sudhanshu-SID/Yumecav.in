@@ -24,7 +24,7 @@ const HeroSection: React.FC = () => {
 
       <div className="z-10 text-center px-4">
         <h2 className="text-lg md:text-xl font-medium tracking-[0.5em] text-neutral-400 mb-6 uppercase">
-          Est. 2024 • The Curated Lifestyle
+          Est. 2025 • The Curated Lifestyle
         </h2>
         <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-8 leading-none">
           ELEVATE YOUR<br />

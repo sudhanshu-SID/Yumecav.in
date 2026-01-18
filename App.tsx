@@ -162,7 +162,7 @@ const App: React.FC = () => {
       </section>
 
       {/* --- Infinite Marquee 2 --- */}
-      <InfiniteMarquee text="EST 2024 • DESIGNED BY THE IDEAL FIRM • MANUFACTURED ON EARTH • FUTURE READY • YUMECAV •" reverse />
+      <InfiniteMarquee text="EST 2025 • DESIGNED BY THE IDEAL FIRM • MANUFACTURED ON EARTH • FUTURE READY • YUMECAV •" reverse />
 
       {/* --- Limited Drop Collages --- */}
       <section id="drops" className="py-24 bg-neutral-900">
