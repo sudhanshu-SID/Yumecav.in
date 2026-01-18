@@ -66,7 +66,7 @@ const App: React.FC = () => {
       <HeroSection />
 
       {/* --- Infinite Marquee 1 --- */}
-      <InfiniteMarquee text="ELEVATE YOUR REALITY • CUSTOM SKINS • LIMITED DROPS • WORLDWIDE SHIPPING • DON'T BE BORING •" />
+      <InfiniteMarquee text="ELEVATE YOUR REALITY • CUSTOM SKINS • LIMITED DROPS • ALL INDIA SHIPPING • DON'T BE BORING •" />
 
       {/* --- Drop Countdown --- */}
       <DropCountdown />
@@ -162,7 +162,7 @@ const App: React.FC = () => {
       </section>
 
       {/* --- Infinite Marquee 2 --- */}
-      <InfiniteMarquee text="EST 2024 • DESIGNED IN TOKYO • MANUFACTURED ON EARTH • FUTURE READY • YUMECAV •" reverse />
+      <InfiniteMarquee text="EST 2024 • DESIGNED BY THE IDEAL FIRM • MANUFACTURED ON EARTH • FUTURE READY • YUMECAV •" reverse />
 
       {/* --- Limited Drop Collages --- */}
       <section id="drops" className="py-24 bg-neutral-900">
