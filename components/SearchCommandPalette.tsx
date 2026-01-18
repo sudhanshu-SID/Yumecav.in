@@ -101,7 +101,7 @@ const SearchCommandPalette: React.FC<SearchCommandPaletteProps> = ({ isOpen, onC
                 </div>
               </div>
               <div className="flex items-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                <span className="font-mono text-sm">${product.price}</span>
+                <span className="font-mono text-sm">₹{product.price}</span>
                 <ArrowRight className="w-4 h-4 text-purple-500" />
               </div>
             </div>

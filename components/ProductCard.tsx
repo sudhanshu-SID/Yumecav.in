@@ -108,7 +108,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onOrder }) => {
         <div className={`flex items-center justify-between border-t border-white/5 pt-2 md:pt-3 transition-opacity duration-500 ${isSticker ? 'opacity-100' : 'opacity-0 group-hover:opacity-100 delay-200'}`}>
           <div className="flex flex-col">
             <span className="text-[8px] md:text-[9px] text-neutral-500 uppercase tracking-wider">Price</span>
-            <span className={`font-bold text-white ${isSticker ? 'text-xs md:text-sm' : 'text-lg'}`}>${product.price}</span>
+            <span className={`font-bold text-white ${isSticker ? 'text-xs md:text-sm' : 'text-lg'}`}>₹{product.price}</span>
           </div>
           <button 
             onClick={() => onOrder(product.name)}

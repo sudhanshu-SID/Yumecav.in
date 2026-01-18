@@ -40,8 +40,8 @@ const WishlistDrawer: React.FC<WishlistDrawerProps> = ({ isOpen, onClose }) => {
   const handleBulkOrder = () => {
     if (wishlistItems.length === 0) return;
 
-    const itemsList = wishlistItems.map(item => `• ${item.name} ($${item.price})`).join('\n');
-    const message = `Hey YUMECAV, I've curated a collection of upgrades I'm interested in:\n\n${itemsList}\n\nTotal Value: ~$${totalPrice.toFixed(2)}\n\nI'd like to discuss ordering this set.`;
+    const itemsList = wishlistItems.map(item => `• ${item.name} (₹${item.price})`).join('\n');
+    const message = `Hey YUMECAV, I've curated a collection of upgrades I'm interested in:\n\n${itemsList}\n\nTotal Value: ~₹${totalPrice.toFixed(2)}\n\nI'd like to discuss ordering this set.`;
     
     const phone = "15550000000";
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
@@ -92,7 +92,7 @@ const WishlistDrawer: React.FC<WishlistDrawerProps> = ({ isOpen, onClose }) => {
                 <div className="flex-1 flex flex-col justify-center">
                   <h3 className="font-bold text-sm leading-tight mb-1">{item.name}</h3>
                   <p className="text-xs text-neutral-400 mb-2">{item.tags[0]}</p>
-                  <p className="text-sm font-mono text-purple-400">${item.price}</p>
+                  <p className="text-sm font-mono text-purple-400">₹{item.price}</p>
                 </div>
                 <button 
                   onClick={() => removeItem(item.id)}
@@ -110,7 +110,7 @@ const WishlistDrawer: React.FC<WishlistDrawerProps> = ({ isOpen, onClose }) => {
           <div className="p-6 border-t border-white/10 bg-neutral-900/95 backdrop-blur-md">
             <div className="flex justify-between items-end mb-6">
               <span className="text-neutral-400 text-sm uppercase tracking-wider">Estimated Value</span>
-              <span className="text-3xl font-black tracking-tighter">${totalPrice.toFixed(2)}</span>
+              <span className="text-3xl font-black tracking-tighter">₹{totalPrice.toFixed(2)}</span>
             </div>
             <button 
               onClick={handleBulkOrder}
