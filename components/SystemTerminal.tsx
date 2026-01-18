@@ -43,7 +43,7 @@ const SystemTerminal: React.FC = () => {
                 ))}
                 
                 <div className="pt-4 mt-8 border-t border-white/10 text-xs text-neutral-600">
-                   STATUS: ONLINE • ENCRYPTION: 256-BIT • SERVER: TOKYO_01
+                   STATUS: ONLINE • ENCRYPTION: 256-BIT • SERVER: GUWAHATI_01
                 </div>
              </div>
           </div>

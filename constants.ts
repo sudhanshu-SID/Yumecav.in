@@ -560,7 +560,7 @@ export const FAQS: FAQItem[] = [
   },
   { 
     question: "LOGISTICS: SHIPPING_VECTOR?", 
-    answer: "Global dispatch initiated within 48 hours. Tracking ID provided via encrypted channel (Email/WhatsApp). Free shipping on orders over $50." 
+    answer: "Global dispatch initiated within 48 hours. Tracking ID provided via encrypted channel (Email/WhatsApp). Free shipping on orders over 300." 
   }
 ];
 
