@@ -14,6 +14,7 @@ import ExploreCard from './components/ExploreCard';
 import ShopTheLookInteractive from './components/ShopTheLookInteractive';
 import SystemTerminal from './components/SystemTerminal';
 import UGCSection from './components/UGCSection';
+import CustomerShowcase from './components/CustomerShowcase';
 import Footer from './components/Footer';
 import WishlistDrawer from './components/WishlistDrawer';
 import SearchCommandPalette from './components/SearchCommandPalette';
@@ -28,7 +29,7 @@ const App: React.FC = () => {
   // Show all 30 stickers as requested
   const featuredStickers = STICKERS.slice(0, 30);
   // Keep posters limited for focus
-  const featuredPosters = POSTERS.slice(0, 30);
+  const featuredPosters = POSTERS.slice(0, 3);
 
   const openCollection = (type: string) => {
     setCollectionInitialType(type);
@@ -66,7 +67,7 @@ const App: React.FC = () => {
       <HeroSection />
 
       {/* --- Infinite Marquee 1 --- */}
-      <InfiniteMarquee text="ELEVATE YOUR REALITY • CUSTOM SKINS • LIMITED DROPS • ALL INDIA SHIPPING • DON'T BE BORING •" />
+      <InfiniteMarquee text="ELEVATE YOUR REALITY • CUSTOM SKINS • LIMITED DROPS • WORLDWIDE SHIPPING • DON'T BE BORING •" />
 
       {/* --- Drop Countdown --- */}
       <DropCountdown />
@@ -162,7 +163,7 @@ const App: React.FC = () => {
       </section>
 
       {/* --- Infinite Marquee 2 --- */}
-      <InfiniteMarquee text="EST 2025 • DESIGNED BY THE IDEAL FIRM • MANUFACTURED ON EARTH • FUTURE READY • YUMECAV •" reverse />
+      <InfiniteMarquee text="EST 2024 • DESIGNED IN TOKYO • MANUFACTURED ON EARTH • FUTURE READY • YUMECAV •" reverse />
 
       {/* --- Limited Drop Collages --- */}
       <section id="drops" className="py-24 bg-neutral-900">
@@ -191,6 +192,9 @@ const App: React.FC = () => {
             </div>
          </div>
       </section>
+
+      {/* --- Customer Showcase --- */}
+      <CustomerShowcase />
 
       {/* --- System Terminal --- */}
       <SystemTerminal />

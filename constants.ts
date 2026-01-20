@@ -1,4 +1,4 @@
-import { Product, LookbookItem, FAQItem, UGCPost } from './types';
+import { Product, LookbookItem, FAQItem, UGCPost, ShowcaseImage } from './types';
 
 export const NOISE_SVG_DATA_URI = `data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E`;
 
@@ -570,4 +570,18 @@ export const UGC_POSTS: UGCPost[] = [
   { id: 3, user: "@design_minds", product: "Tokyo Nightfall Print", time: "1d ago", img: "https://images.unsplash.com/photo-1550029402-226115b7c579?q=80&w=1965&auto=format&fit=crop" },
   { id: 4, user: "@future_arch", product: "Bauhaus Tech Poster", time: "2d ago", img: "https://images.unsplash.com/photo-1563770095-25f6f328a20d?q=80&w=2000&auto=format&fit=crop" },
   { id: 5, user: "@synth_wave", product: "Retro Console Skin", time: "3d ago", img: "https://images.unsplash.com/photo-1605901309584-818e25960b8f?q=80&w=2000&auto=format&fit=crop" }
+];
+
+export const SHOWCASE_ROW_1:ShowcaseImage[] = [
+  { id: 1, url: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop", user: "@kuro_visuals", alt: "Laptop Skin" },
+  { id: 2, url: "https://images.unsplash.com/photo-1557672172-298e090bd0f1?q=80&w=1974&auto=format&fit=crop", user: "@neon_dreamer", alt: "Wall Art" },
+  { id: 3, url: "https://images.unsplash.com/photo-1614624532983-4ce03382d63d?q=80&w=2070&auto=format&fit=crop", user: "@cyber_pixel", alt: "Sticker Pack" },
+  { id: 4, url: "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?q=80&w=2070&auto=format&fit=crop", user: "@brutalist_hacker", alt: "Console Skin" }
+];
+
+export const SHOWCASE_ROW_2: ShowcaseImage[] = [
+  { id: 5, url: "https://images.unsplash.com/photo-1612287232817-60286063faf4?q=80&w=2070&auto=format&fit=crop", user: "@mecha_fan", alt: "PC Setup" },
+  { id: 6, url: "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=2070&auto=format&fit=crop", user: "@tokyo_nights", alt: "Neon Vibes" },
+  { id: 7, url: "https://images.unsplash.com/photo-1589254065878-42c9da997008?q=80&w=2070&auto=format&fit=crop", user: "@tech_nomad", alt: "Upgrade Kit" },
+  { id: 8, url: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop", user: "@circuit_mind", alt: "Gold Detail" }
 ];

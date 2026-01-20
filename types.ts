@@ -39,3 +39,10 @@ export interface UGCPost {
   time: string;
   img: string;
 }
+
+export interface ShowcaseImage {
+  id: number;
+  url: string;
+  user: string;
+  alt: string;
+}
