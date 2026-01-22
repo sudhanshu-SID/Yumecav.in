@@ -20,4 +20,4 @@ When you are ready to show the world:
 4. Click **Deploy**.
 
 ---
-© 2024 YUMECAV. "DEFAULT IS DEATH."
+© 2025 YUMECAV. "DEFAULT IS DEATH."
