@@ -43,7 +43,7 @@ const WishlistDrawer: React.FC<WishlistDrawerProps> = ({ isOpen, onClose }) => {
     const itemsList = wishlistItems.map(item => `• ${item.name} (₹${item.price})`).join('\n');
     const message = `Hey YUMECAV, I've curated a collection of upgrades I'm interested in:\n\n${itemsList}\n\nTotal Value: ~₹${totalPrice.toFixed(2)}\n\nI'd like to discuss ordering this set.`;
     
-    const phone = "15550000000";
+    const phone = "7896409312";
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
   };
