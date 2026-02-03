@@ -11,6 +11,19 @@ export interface Product {
   type: 'Sticker' | 'Poster-Single' | 'Poster-Split'; 
 }
 
+
+export interface CartItem extends Product {
+  quantity: number;
+}
+
+export interface ShippingDetails {
+  name: string;
+  email: string;
+  address: string;
+  pincode: string;
+  phone: string;
+}
+
 export interface Hotspot {
   id: number;
   top: number;
