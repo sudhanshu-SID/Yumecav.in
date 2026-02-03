@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Layers, Image as ImageIcon, ChevronRight } from 'lucide-react';
 import { NOISE_SVG_DATA_URI, STICKERS, POSTERS, LOOKBOOKS } from './constants';
-import { handleOrder } from './utils';
+import { useCart } from './CartContext';
+
 
 // Components
 import CustomCursor from './components/CustomCursor';
@@ -16,15 +17,20 @@ import SystemTerminal from './components/SystemTerminal';
 import UGCSection from './components/UGCSection';
 import CustomerShowcase from './components/CustomerShowcase';
 import Footer from './components/Footer';
-import WishlistDrawer from './components/WishlistDrawer';
 import SearchCommandPalette from './components/SearchCommandPalette';
 import CollectionOverlay from './components/CollectionOverlay';
+import CheckoutPage from './components/CheckoutPage';
+import { CartDrawer } from './components/CartDrawer';
+
 
 const App: React.FC = () => {
-  const [isWishlistOpen, setIsWishlistOpen] = useState(false);
+  
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isCollectionOpen, setIsCollectionOpen] = useState(false);
   const [collectionInitialType, setCollectionInitialType] = useState('All');
+  const { addToCart, cartItems, setIsCartOpen } = useCart();
+  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+
 
   // Show all 30 stickers as requested
   const featuredStickers = STICKERS.slice(0, 30);
@@ -49,19 +55,28 @@ const App: React.FC = () => {
 
       {/* --- Navigation --- */}
       <Navbar 
-        onOpenWishlist={() => setIsWishlistOpen(true)} 
         onOpenSearch={() => setIsSearchOpen(true)}
         onOpenCollection={() => openCollection('All')}
       />
 
       {/* --- Overlays --- */}
-      <WishlistDrawer isOpen={isWishlistOpen} onClose={() => setIsWishlistOpen(false)} />
+      
       <SearchCommandPalette isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
       <CollectionOverlay 
         isOpen={isCollectionOpen} 
         onClose={() => setIsCollectionOpen(false)} 
         initialType={collectionInitialType}
       />
+
+      {/* --- Cart Drawer --- */}
+       <CartDrawer onCheckout={() => setIsCheckoutOpen(true)} />
+
+       <CheckoutPage
+        isOpen={isCheckoutOpen}
+        onClose={() => setIsCheckoutOpen(false)}
+        cartItems={cartItems}
+        onSuccess={() => setIsCheckoutOpen(false)}
+/>
 
       {/* --- Hero Section --- */}
       <HeroSection />
@@ -119,7 +134,7 @@ const App: React.FC = () => {
               <div className="flex overflow-x-auto no-scrollbar gap-4 pb-6 px-1 scroll-smooth">
                 {featuredStickers.map((product) => (
                   <div key={product.id} className="flex-none w-[160px] md:w-[220px]">
-                    <ProductCard product={product} onOrder={handleOrder} />
+                    <ProductCard product={product} onOrder={() => addToCart(product)} />
                   </div>
                 ))}
                 {/* Explore More Card at the end of the scroll */}
@@ -149,7 +164,7 @@ const App: React.FC = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {featuredPosters.map((product) => (
-                <ProductCard key={product.id} product={product} onOrder={handleOrder} />
+                <ProductCard key={product.id} product={product} onOrder={() => addToCart(product)} />
               ))}
               <ExploreCard 
                 title="Gallery" 

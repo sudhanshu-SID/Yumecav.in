@@ -4,7 +4,7 @@ import { Product } from '../types';
 
 interface ProductCardProps {
   product: Product;
-  onOrder: (name: string) => void;
+  onOrder: () => void;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, onOrder }) => {
@@ -111,7 +111,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onOrder }) => {
             <span className={`font-bold text-white ${isSticker ? 'text-xs md:text-sm' : 'text-lg'}`}>₹{product.price}</span>
           </div>
           <button 
-            onClick={() => onOrder(product.name)}
+            onClick={ onOrder}
             className={`flex items-center gap-2 bg-purple-600 hover:bg-purple-500 text-white rounded-lg font-bold transition-all ${isSticker ? 'p-1 md:p-1.5' : 'px-5 py-2.5 text-sm'}`}
             title="Order on WhatsApp"
           >

@@ -28,7 +28,7 @@ export const triggerOrderProcess = async (orderData: any) => {
  * Initiates a direct order inquiry via WhatsApp.
  * Used for specific items or general business inquiries (B2B).
  */
-export const handleOrder = (item?: string) => {
+export const handleManualInquiry = (item?: string) => {
   const message = item 
     ? `Hey YUMECAV, I'm interested in: ${item}. Can I get more details or place an order?`
     : `Hey YUMECAV, I'd like to discuss a custom order or inquiry.`;

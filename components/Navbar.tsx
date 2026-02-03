@@ -1,32 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Heart, Search, Grid } from 'lucide-react';
+import { Menu, X, Search, Grid, ShoppingCart } from 'lucide-react';
+import { useCart } from '../CartContext';
+
 
 interface NavbarProps {
-  onOpenWishlist: () => void;
   onOpenSearch: () => void;
   onOpenCollection: () => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ onOpenWishlist, onOpenSearch, onOpenCollection }) => {
+const Navbar: React.FC<NavbarProps> = ({ onOpenSearch, onOpenCollection }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [wishlistCount, setWishlistCount] = useState(0);
+  const { cartItems, setIsCartOpen } = useCart();
+  const cartCount = cartItems.reduce(
+  (sum, item) => sum + item.quantity,
+  0
+);
+
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
-    
-    const updateCount = () => {
-      const wishlist = JSON.parse(localStorage.getItem('yumecav_wishlist') || '[]');
-      setWishlistCount(wishlist.length);
-    };
-
-    updateCount();
+   
     window.addEventListener('scroll', handleScroll);
-    window.addEventListener('wishlist-updated', updateCount);
-
+    
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('wishlist-updated', updateCount);
+      
     };
   }, []);
 
@@ -65,15 +64,15 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenWishlist, onOpenSearch, onOpenCol
             </button>
 
             <button 
-              onClick={onOpenWishlist}
+              onClick= {() => setIsCartOpen(true)}
               className="relative group hover:text-purple-500 transition-colors p-1"
-              aria-label="Wishlist"
+              aria-label="Cart"
             >
-              <Heart className={`w-5 h-5 ${wishlistCount > 0 ? 'fill-purple-500 text-purple-500' : ''} group-hover:scale-110 transition-transform`} />
-              {wishlistCount > 0 && (
-                <span className="absolute -top-1 -right-1 w-3 h-3 bg-white text-black text-[9px] font-bold flex items-center justify-center rounded-full">
-                  {wishlistCount}
-                </span>
+              <ShoppingCart className={`w-5 h-5 ${cartCount > 0 ? 'fill-purple-500 text-purple-500' : ''} group-hover:scale-110 transition-transform`} />
+              {cartCount > 0 && (
+              <span className="absolute -top-1 -right-1 w-3 h-3 bg-white text-black text-[9px] font-bold flex items-center justify-center rounded-full">
+              {cartCount}
+              </span>
               )}
             </button>
           </div>
@@ -84,13 +83,13 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenWishlist, onOpenSearch, onOpenCol
              </button>
              
              <button 
-                onClick={onOpenWishlist}
+                onClick={() => setIsCartOpen(true)}
                 className="relative text-white hover:text-purple-500 transition-colors"
               >
-              <Heart className={`w-5 h-5 ${wishlistCount > 0 ? 'fill-purple-500 text-purple-500' : ''}`} />
-              {wishlistCount > 0 && (
+              <ShoppingCart className={`w-5 h-5 ${cartCount > 0 ? 'fill-purple-500 text-purple-500' : ''}`} />
+              {cartCount > 0 && (
                 <span className="absolute -top-1 -right-1 w-3 h-3 bg-white text-black text-[9px] font-bold flex items-center justify-center rounded-full">
-                  {wishlistCount}
+                  {cartCount}
                 </span>
               )}
             </button>
