@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useEffect } from 'react';
 import { X, Trash2, ShoppingBag, ArrowRight, Minus, Plus, Zap, Package } from 'lucide-react';
 import { useCart } from '../CartContext';
 import { formatPrice } from '../utils';
@@ -8,6 +8,9 @@ import { Product } from '../types';
 interface CartDrawerProps {
   onCheckout: () => void;
 }
+
+
+
 
 export const CartDrawer: React.FC<CartDrawerProps> = ({ onCheckout }) => {
   const { 
@@ -31,14 +34,27 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onCheckout }) => {
     return allProducts.sort((a, b) => parseFloat(a.price) - parseFloat(b.price)).slice(0, 4);
   }, []);
 
+  useEffect(() => {
+   if (isCartOpen) {
+    document.body.classList.add('cart-open');
+    } else {
+    document.body.classList.remove('cart-open');
+    }
+
+    return () => {
+    document.body.classList.remove('cart-open');
+     };
+    }, [isCartOpen]);
+
+
   return (
     <>
       <div 
-        className={`fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] transition-opacity duration-500 ${isCartOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+        className={`fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] transition-opacity duration-500 cursor-auto ${isCartOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
         onClick={() => setIsCartOpen(false)}
       />
 
-      <div className={`fixed top-0 right-0 h-full w-full md:w-[420px] bg-neutral-900 border-l border-white/10 z-[110] transform transition-transform duration-500 shadow-2xl flex flex-col ${isCartOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+      <div className={`fixed top-0 right-0 h-full w-full md:w-[420px] bg-neutral-900 cursor-auto border-l border-white/10 z-[110] transform transition-transform duration-500 shadow-2xl flex flex-col ${isCartOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         
         <div className="p-6 border-b border-white/10 flex justify-between items-center bg-black/20 backdrop-blur-md">
           <div className="flex items-center gap-3">
