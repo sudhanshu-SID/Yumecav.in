@@ -117,12 +117,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onOrder }) => {
             onClick={onOrder}
             className={`flex items-center gap-2 bg-purple-600 hover:bg-purple-500 text-white rounded-lg font-bold transition-all ${
               isSticker
-                ? 'p-1 md:p-1.5 text-[10px]'
+                ? 'px-3 py-2 md:px-4 md:py-2.5 text-xs'
                 : 'px-5 py-2.5 text-sm'
             }`}
           >
             <ShoppingCart
-              className={`${isSticker ? 'w-3 h-3' : 'w-4 h-4'}`}
+              className={`${isSticker ? 'w-4 h-4' : 'w-4 h-4'}`}
             />
             {!isSticker && 'Add to Bag'}
           </button>
