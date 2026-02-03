@@ -1,6 +1,7 @@
 import React from 'react';
 import { Hotspot } from '../types';
-import { handleOrder } from '../utils';
+import { useCart } from '../CartContext';
+
 
 interface ShopTheLookProps {
   image: string;
@@ -8,6 +9,8 @@ interface ShopTheLookProps {
 }
 
 const ShopTheLookInteractive: React.FC<ShopTheLookProps> = ({ image, hotspots }) => {
+  const { addToCart, setIsCartOpen } = useCart();
+
   return (
     <div className="relative w-full h-[500px] md:h-[700px] bg-neutral-800 rounded-3xl overflow-hidden group">
       <img 
@@ -32,7 +35,23 @@ const ShopTheLookInteractive: React.FC<ShopTheLookProps> = ({ image, hotspots })
             <h4 className="font-bold text-sm mb-1">{spot.name}</h4>
             <p className="text-purple-400 text-xs font-bold mb-2">{spot.price}</p>
             <button 
-              onClick={(e) => { e.stopPropagation(); handleOrder(spot.link); }}
+              onClick={(e) => {
+              e.stopPropagation();
+               addToCart({
+                 name: spot.name,
+                 price: spot.price,
+                 imageAfter: image,
+                 imageBefore: image,
+                 description: '',
+                 vibeScore: 0,
+                 tags: [],
+                 category: 'Look',
+                 id: spot.id,
+                type: 'Poster-Single',
+              });
+              setIsCartOpen(true);
+             }}
+
               className="text-[10px] uppercase font-bold tracking-wider bg-white text-black px-3 py-1.5 rounded-full hover:bg-purple-500 hover:text-white transition-colors w-full"
             >
               Get It

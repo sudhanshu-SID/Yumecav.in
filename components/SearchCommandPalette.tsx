@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Search, X, ArrowRight, Heart } from 'lucide-react';
+import { Search, X, ArrowRight } from 'lucide-react';
 import { STICKERS, POSTERS } from '../constants';
 import { Product } from '../types';
-import { handleOrder } from '../utils';
+import { useCart } from '../CartContext';
+
 
 interface SearchCommandPaletteProps {
   isOpen: boolean;
@@ -13,6 +14,8 @@ const SearchCommandPalette: React.FC<SearchCommandPaletteProps> = ({ isOpen, onC
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<Product[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
+  const { addToCart, setIsCartOpen } = useCart();
+
   
   const allProducts = [...STICKERS, ...POSTERS];
 
@@ -91,7 +94,7 @@ const SearchCommandPalette: React.FC<SearchCommandPaletteProps> = ({ isOpen, onC
           )}
 
           {results.map((product) => (
-            <div key={product.id} className="flex items-center gap-4 p-4 hover:bg-white/5 border-b border-white/5 group transition-colors cursor-pointer" onClick={() => handleOrder(product.name)}>
+            <div key={product.id} className="flex items-center gap-4 p-4 hover:bg-white/5 border-b border-white/5 group transition-colors cursor-pointer" onClick={() => { addToCart(product); setIsCartOpen(true); onClose(); }}>
               <img src={product.imageAfter} alt={product.name} className="w-12 h-12 rounded object-cover" />
               <div className="flex-1">
                 <h4 className="font-bold text-sm text-white">{product.name}</h4>
