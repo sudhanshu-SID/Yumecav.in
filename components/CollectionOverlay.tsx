@@ -2,7 +2,8 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { X, Filter, Sparkles, LayoutGrid, StickyNote } from 'lucide-react';
 import { STICKERS, POSTERS } from '../constants';
 import ProductCard from './ProductCard';
-import { handleOrder } from '../utils';
+import { useCart } from '../CartContext';
+
 
 interface CollectionOverlayProps {
   isOpen: boolean;
@@ -10,10 +11,18 @@ interface CollectionOverlayProps {
   initialType?: string; // Now strictly 'Stickers' | 'Poster'
 }
 
-const CollectionOverlay: React.FC<CollectionOverlayProps> = ({ isOpen, onClose, initialType = 'Stickers' }) => {
-  // Default to Stickers if 'All' is passed or if initialType is missing
-  const [filterType, setFilterType] = useState<string>(initialType === 'All' ? 'Stickers' : initialType);
+const CollectionOverlay: React.FC<CollectionOverlayProps> = ({
+  isOpen,
+  onClose,
+  initialType = 'Stickers',
+}) => {
+  const [filterType, setFilterType] = useState<string>(
+    initialType === 'All' ? 'Stickers' : initialType
+  );
   const [filterCategory, setFilterCategory] = useState<string>('All');
+
+  const { addToCart, setIsCartOpen } = useCart();
+
 
   // Lock body scroll when open
   useEffect(() => {
@@ -141,7 +150,12 @@ const CollectionOverlay: React.FC<CollectionOverlayProps> = ({ isOpen, onClose, 
            >
               {filteredProducts.map(product => (
                 <div key={product.id} className="h-full">
-                  <ProductCard product={product} onOrder={handleOrder} />
+                  <ProductCard 
+                  product={product}
+                  onOrder={() => {
+                   addToCart(product);
+                   setIsCartOpen(true);
+                   }} />
                 </div>
               ))}
            </div>

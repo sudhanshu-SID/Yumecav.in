@@ -39,3 +39,6 @@ export const handleManualInquiry = (item?: string) => {
   window.open(url, '_blank');
 };
 
+// Alias for handleOrder to match component imports
+export const handleOrder = handleManualInquiry;
+
