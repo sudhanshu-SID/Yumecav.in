@@ -175,7 +175,8 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onCheckout }) => {
           <button 
             className={`w-full py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-xs flex items-center justify-center gap-3 transition-all active:scale-95 shadow-2xl ${cartTotal < MIN_ORDER ? 'bg-neutral-800 text-neutral-600 cursor-not-allowed border border-white/5' : 'bg-white text-black hover:bg-purple-600 hover:text-white'}`}
             disabled={cartTotal < MIN_ORDER}
-            onClick={() => { setIsCartOpen(false); onCheckout(); }}
+            // onClick={() => { setIsCartOpen(false); onCheckout(); }}
+            onClick={() => alert('🚧 Checkout is currently disabled. We are integrating payments! Check back soon.')}
           >
             {cartTotal < MIN_ORDER ? `Locked 🔒 Add ₹${amountToUnlock}` : `Secure Checkout • ${formatPrice(cartTotal)}`}
             {cartTotal >= MIN_ORDER && <ArrowRight className="w-4 h-4" />}
